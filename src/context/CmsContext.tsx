@@ -60,17 +60,21 @@ export const CmsProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [state, setState] = useState<CmsState>(() => {
     const saved = localStorage.getItem('school_cms_state');
     if (saved) {
-      const parsed = JSON.parse(saved);
-      return {
-        ...defaultState,
-        ...parsed,
-        schoolInfo: { ...defaultState.schoolInfo, ...(parsed.schoolInfo || {}) },
-        quickLinks: parsed.quickLinks || defaultState.quickLinks,
-        theme: parsed.theme || defaultState.theme,
-        gallery: parsed.gallery || defaultState.gallery,
-        notices: parsed.notices || defaultState.notices,
-        achievements: parsed.achievements || defaultState.achievements,
-      };
+      try {
+        const parsed = JSON.parse(saved);
+        return {
+          ...defaultState,
+          ...parsed,
+          schoolInfo: { ...defaultState.schoolInfo, ...(parsed.schoolInfo || {}) },
+          quickLinks: parsed.quickLinks || defaultState.quickLinks,
+          theme: parsed.theme || defaultState.theme,
+          gallery: parsed.gallery || defaultState.gallery,
+          notices: parsed.notices || defaultState.notices,
+          achievements: parsed.achievements || defaultState.achievements,
+        };
+      } catch (e) {
+        console.error('Failed to parse CMS state from local storage', e);
+      }
     }
     return defaultState;
   });

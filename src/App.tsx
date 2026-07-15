@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { CmsProvider, useCms } from './context/CmsContext';
 
 import PublicLayout from './components/public/PublicLayout';
@@ -24,7 +24,7 @@ function AppContent() {
   }, [state.theme]);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         {/* Public Website Routes */}
         <Route path="/" element={<PublicLayout />}>
@@ -44,7 +44,7 @@ function AppContent() {
           <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

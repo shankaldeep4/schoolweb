@@ -1,0 +1,6 @@
+{
+  "name": "EduCore - School Management Site",
+  "description": "A comprehensive school website featuring a public portal for visitors and a CMS admin panel for managing notices, galleries, and admission information.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

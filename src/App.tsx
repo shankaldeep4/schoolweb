@@ -21,7 +21,8 @@ function AppContent() {
   
   useEffect(() => {
     document.documentElement.className = `theme-${state.theme}`;
-  }, [state.theme]);
+    document.title = state.schoolInfo.name || 'School App';
+  }, [state.theme, state.schoolInfo.name]);
 
   return (
     <HashRouter>
